@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ContactsManagerRoutingModule } from './contacts-manager-routing.module';
 import { ContactsManagerComponent } from './contacts-manager.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { ContactsManagerComponent } from './contacts-manager.component';
     CommonModule,
     ContactsManagerRoutingModule,
     FlexLayoutModule,
+    HttpClientModule,
   ]
 })
 export class ContactsManagerModule { }
