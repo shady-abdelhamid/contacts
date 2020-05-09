@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-
+  
   private _users: BehaviorSubject<User[]>;
 
   private dataStore: {
@@ -19,10 +19,16 @@ export class UserService {
     this._users = new BehaviorSubject<User[]>([]);
   }
 
+  /**
+   * getter for users observable
+   */
   get users(): Observable<User[]> {
     return this._users.asObservable();
   }
 
+  /**
+   * load users data from endpoint into data store
+   */
   loadAll() {
     const usersUrl = 'https://angular-material-api.azurewebsites.net/users';
 
@@ -34,5 +40,13 @@ export class UserService {
         console.log('Failed to fetch users');
       });
 
+  }
+
+  /**
+   * get user by user id
+   * @param id userId
+   */
+  getUserById(id: any): User {
+    return this.dataStore.users.find(u => u.id == id);
   }
 }
