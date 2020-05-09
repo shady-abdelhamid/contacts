@@ -18,15 +18,13 @@ export class ContactsManagerComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const id = params['id'];
+      const id = params['id'] ? params['id'] : 1;
       this.userService.users.subscribe( users => {
         if (users.length == 0) return;
-        
+
         this.user = this.userService.getUserById(id);
       });
     });
-
-    console.log(this.user);
   }
 
 }
